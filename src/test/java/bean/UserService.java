@@ -3,6 +3,8 @@ package bean;
 public class UserService {
         private String name;
         private int age;
+        private UserDao userDao;
+
         public UserService() {
         }
 

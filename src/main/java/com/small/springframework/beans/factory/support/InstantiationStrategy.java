@@ -1,6 +1,6 @@
 package com.small.springframework.beans.factory.support;
 
-import com.small.springframework.beans.BeansException;
+import com.small.springframework.BeansException;
 import com.small.springframework.beans.factory.config.BeanDefinition;
 
 import java.lang.reflect.Constructor;

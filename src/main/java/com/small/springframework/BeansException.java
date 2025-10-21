@@ -1,6 +1,4 @@
-package com.small.springframework.beans;
-
-import java.io.Serializable;
+package com.small.springframework;
 
 public class BeansException extends RuntimeException {
         public BeansException(String message) {

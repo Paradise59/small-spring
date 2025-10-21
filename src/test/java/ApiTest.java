@@ -1,5 +1,10 @@
+import bean.UserDao;
 import bean.UserService;
+import bean.UserService2;
+import com.small.springframework.beans.PropertyValues;
+import com.small.springframework.beans.PropertyValue;
 import com.small.springframework.beans.factory.config.BeanDefinition;
+import com.small.springframework.beans.factory.config.BeanReference;
 import com.small.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.cglib.proxy.Enhancer;
@@ -83,4 +88,26 @@ public class ApiTest {
                 UserService userService = declaredConstructor.newInstance("ly", 01);
                 System.out.println(userService);
         }
+        @Test
+        public void test_BeanFactory_With_Property() {
+                // 1.初始化 BeanFactory
+                DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+                // 2. UserDao 注册
+                beanFactory.registerBeanDefinition("userDao", new BeanDefinition(UserDao.class));
+
+                // 3. UserService 设置属性[uId、userDao]
+                PropertyValues propertyValues = new PropertyValues();
+                propertyValues.addPropertyValue(new PropertyValue("uId", "10001"));
+                propertyValues.addPropertyValue(new PropertyValue("userDao", new BeanReference("userDao")));
+
+                // 4. UserService 注入bean
+                BeanDefinition beanDefinition = new BeanDefinition(UserService2.class, propertyValues);
+                beanFactory.registerBeanDefinition("userService2", beanDefinition);
+
+                // 5. UserService 获取bean
+                UserService2 userService = (UserService2) beanFactory.getBean("userService2");
+                userService.queryUserInfo();
+        }
+
 }
