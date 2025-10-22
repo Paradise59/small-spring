@@ -6,7 +6,8 @@ Spring中任何实现了 BeanFactory 接口的类都可以视为容器，它是 
 ApplicationContext 最常用的两个实现 ClassPathXmlApplicationContext 和 AnnotationConfigApplicationContext 
 1. 前者用于从项目路径下根据 xml 文件加载 bean，而后者通过扫描类注解完成 bean 的加载。
 2. 这两者 ApplicationContext 实际上就对应了我们所熟悉的两类配置方式，前者就是传统的 xml 配置，后者则是通过 @Component 与 @Bean 等注解对 bean 进行配置
-
+![img_2.png](img_2.png)
+3. ![img_1.png](img_1.png)
 # 2. BeanFactory接口体系
 总览 BeanFactory 体系，按照接口的抽象层次，大体可以分层四层:
 ![img.png](img.png)
